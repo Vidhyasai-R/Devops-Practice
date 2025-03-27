@@ -3,6 +3,11 @@ resource "aws_instance" "ec2_instance" {
   vpc_security_group_ids = [aws_security_group.security_group.id]
   subnet_id = "subnet-0034958e99b0438ae"
   instance_type          = "t3.micro"
+
+  root_block_device {
+    volume_size = 50  # Set root volume size to 50GB
+    volume_type = "gp3"  # Use gp3 for better performance (optional)
+  }
   
   user_data = file("docker.sh")
   tags = {
