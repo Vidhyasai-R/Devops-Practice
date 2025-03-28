@@ -1,25 +1,31 @@
-networks: # docker network create expense
+networks:
   expense: {}
+  # docker volume create mysql
 volumes:
-  mysql:  # docker volume create mysql
-services:
   mysql:
-    image: joindevsecops/mysql:latest # docker pull
-    container_name: mysql # --name mysql
+services:
+  # docker run -d --name mysql --network expense -v mysql:/var/lib/mysql mysql:1.0.0
+  mysql:
+    image: joindevsecops/mysql:latest
+    networks:
+    - expense
+    container_name: mysql
     volumes:
-    - mysql:/var/lib/mysql # -v mysql:/var/lib/mysql
-
+    - mysql:/var/lib/mysql
   backend:
-    image: joindevsecops/backend:latest # docker pull
-    container_name: backend # --name backend
-    command: sh -c "sleep 5 && node /opt/backend/index.js"
-    depends on:
+    image: joindevsecops/backend:latest
+    command: sh -c "sleep 10 && node /opt/backend/index.js"
+    networks:
+    - expense
+    container_name: backend
+    depends_on:
     - mysql
-  
   frontend:
-    image: joindevsecops/frontend:latest # docker pull
-    container_name: frontend # --name frontend
+    image: joindevsecops/frontend:latest
+    networks:
+    - expense
+    container_name: frontend
     ports:
     - 80:80
-    depends on:
+    depends_on:
     - backend
