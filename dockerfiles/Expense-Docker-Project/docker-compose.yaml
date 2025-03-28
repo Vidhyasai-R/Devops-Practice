@@ -1,5 +1,5 @@
 networks: # docker network create expense
-  expense:
+  expense: {}
 volumes:
   mysql:  # docker volume create mysql
 services:
