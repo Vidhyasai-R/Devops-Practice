@@ -1,0 +1,25 @@
+version: "3"
+networks: # docker network create expense
+  expense:
+volumes:
+  mysql:  # docker volume create mysql
+services:
+  mysql:
+    image: joindevsecops/mysql:latest # docker pull
+    container_name: mysql # --name mysql
+    volumes:
+    - mysql:/var/lib/mysql # -v mysql:/var/lib/mysql
+
+  backend:
+    image: joindevsecops/backend:latest # docker pull
+    container_name: backend # --name backend
+    depends on:
+    - mysql
+  
+  frontend:
+    image: joindevsecops/frontend:latest # docker pull
+    container_name: frontend # --name backend
+    ports:
+    - 80:80
+    depends on:
+    - backend
