@@ -7,5 +7,5 @@ spec:
   - name: nginx
     image: nginx
   - name: almalinux
-    image: nginx
+    image: almalinux:9
     command: "sleep 100"
