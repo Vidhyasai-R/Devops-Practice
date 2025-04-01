@@ -7,5 +7,5 @@ spec:
   # docker run -d --name nginx nginx 
   - name: nginx
     image: nginx
-  ports:
-  - containerPort: 80
+    ports:
+    - containerPort: 80
