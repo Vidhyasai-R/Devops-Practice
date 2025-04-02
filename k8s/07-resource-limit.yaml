@@ -3,7 +3,7 @@ kind: Pod
 metadata:
   name: resource-limit
 spec:
-  constainers:
+  containers:
   - name: nginx
     image: nginx
     resources:
