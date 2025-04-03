@@ -42,7 +42,6 @@ metadata:
   name: backend
   namespace: expense
 spec:
-  type: LoadBalancer
   selector:
     app: backend
     tier: api
