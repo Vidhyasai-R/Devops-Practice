@@ -42,6 +42,7 @@ metadata:
   name: backend
   namespace: expense
 spec:
+  type: LoadBalancer
   selector:
     app: backend
     tier: api
@@ -49,5 +50,5 @@ spec:
   ports:
   - name: backend-port
     protocol: TCP
-    port: 3306 #service port
-    targetPort: 3306 #container port
+    port: 8080 #service port
+    targetPort: 8080 #container port
