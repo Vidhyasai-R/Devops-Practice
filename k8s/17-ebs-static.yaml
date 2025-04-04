@@ -37,8 +37,6 @@ spec:
   containers:
   - name: nginx
     image: nginx
-    command: ["/bin/sh"]
-    args: ["-c", "while true; do echo $(date -u) >> /data/out.txt; sleep 5; done"]
     volumeMounts:
     - name: ebs-static
       mountPath: /usr/share/nginx/html
