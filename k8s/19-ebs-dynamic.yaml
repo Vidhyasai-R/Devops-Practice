@@ -16,7 +16,7 @@ kind: Pod
 metadata:
   name: ebs-dynamic
   labels:
-    purpose: ebs-static
+    purpose: ebs-dynamic
 spec:
   nodeSelector:
     topology.kubernetes.io/zone: us-east-1f
