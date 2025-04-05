@@ -43,7 +43,7 @@ spec:
   volumes:
   - name: expense-efs
     persistentVolumeClaim:
-      claimName: expense-efs
+      claimName: expense-efs-claim
 ---
 apiVersion: v1
 kind: Service
