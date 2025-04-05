@@ -5,7 +5,6 @@ metadata:
   namespace: expense
 spec:
   clusterIP: None # for headless service there is no cluster IP
-  type: LoadBalancer
   selector:
     project: expense
     component: mysql
