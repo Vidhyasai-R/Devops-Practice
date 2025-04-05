@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: efs-dynamic
 spec:
-  storageClassName: "expense-efs"
+  storageClassName: "efs-expense"
   accessModes:
     - ReadWriteMany
   resources:
