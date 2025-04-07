@@ -8,7 +8,7 @@ metadata:
     tier: web
     project: expense
 spec:
-  replicas: 2
+  replicas: {{ .Values.deployment.replicas }}
   selector:
     matchLabels:
       app: frontend
@@ -24,34 +24,3 @@ spec:
       containers:
       - name: frontend
         image: joindevsecops/frontend:{{ .Values.deployment.imageVersion }}
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: frontend
-  namespace: expense
-spec:
-  type: LoadBalancer
-  selector:
-    app: frontend
-    tier: web
-    project: expense
-  ports:
-  - name: frontend-port
-    protocol: TCP
-    port: 80 #service port
-    targetPort: 80 #container port
----
-apiVersion: autoscaling/v1
-kind: HorizontalPodAutoscaler
-metadata:
- name: frontend
- namespace: expense
-spec:
- scaleTargetRef:
-   apiVersion: apps/v1
-   kind: Deployment
-   name: frontend
- minReplicas: 1
- maxReplicas: 10
- targetCPUUtilizationPercentage: {{ .Values.hpa.cpuUtilization }}
