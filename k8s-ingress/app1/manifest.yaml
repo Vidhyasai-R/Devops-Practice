@@ -30,7 +30,7 @@ metadata:
   name: nginx
 spec:
   selector:
-    tier: frontend1
+    tier: frontend
     app: app1
   ports:
   - name: nginx-svc-port
