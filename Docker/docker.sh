@@ -35,7 +35,7 @@ sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
 sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
 
 #k9s
-curl -sS https://webinstall.dev/k9s | bash
+sudo curl -sS https://webinstall.dev/k9s | bash
 
 #Installing helm
 sudo curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
