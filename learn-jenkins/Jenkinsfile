@@ -30,7 +30,7 @@ pipeline{
         }
         stage('Deploy') {
             when {
-                expression { env.BRANCH_NAME == "origin/main" }
+                expression { env.GIT_BRANCH == "origin/main" }
             }
             steps {
                 sh 'echo this is deploy'
@@ -46,7 +46,7 @@ pipeline{
                 echo "Password: ${params.PASSWORD}"
             }
         }
-        stage('Approval') {
+        /* stage('Approval') {
             input {
                 message "Should we continue?"
                 ok "Yes, we should."
@@ -58,7 +58,7 @@ pipeline{
             steps {
                 echo "Hello, ${PERSON}, nice to meet you."
             }
-        }
+        } */
     }
 
     post {
